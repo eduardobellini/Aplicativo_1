@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from './src/context/AuthContext';
 import { CartProvider } from './src/context/CartContext';
 import { RootStackParamList } from './src/navigation/types';
 import Cart from './src/pages/Cart';
+import Checkout from './src/pages/Checkout';
 import Home from './src/pages/Home';
 import Login from './src/pages/Login';
 import ProductDetail from './src/pages/ProductDetail';
@@ -52,6 +53,7 @@ function Routes() {
           component={Cart}
           options={{ presentation: 'modal', animation: 'slide_from_bottom' }}
         />
+        <Stack.Screen name="Checkout" component={Checkout} />
         <Stack.Screen
           name="Success"
           component={Success}

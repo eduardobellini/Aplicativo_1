@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -9,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { illustrations, logo } from '../../Assets';
 import FadeInView from '../../components/FadeInView';
 import PressableScale from '../../components/PressableScale';
 import TextField from '../../components/TextField';
@@ -61,19 +63,18 @@ export default function Login({ navigation }: ScreenProps<'Login'>) {
               <View style={[styles.blob, styles.blobOrange]} />
               <View style={[styles.blob, styles.blobGreen]} />
               <FadeInView delay={0} offset={30}>
-                <Text style={styles.heroEmoji}>🐶</Text>
-              </FadeInView>
-              <FadeInView delay={120} offset={30} style={styles.heroEmojiCatWrap}>
-                <Text style={styles.heroEmojiCat}>🐱</Text>
+                <Image
+                  source={illustrations.heroLogin}
+                  style={styles.heroImage}
+                  accessibilityIgnoresInvertColors
+                />
               </FadeInView>
             </View>
 
             <View style={styles.form}>
               <FadeInView delay={200}>
                 <View style={styles.brandRow}>
-                  <View style={styles.brandMark}>
-                    <Text style={styles.brandMarkText}>🐾</Text>
-                  </View>
+                  <Image source={logo} style={styles.brandMark} accessibilityIgnoresInvertColors />
                   <Text style={styles.brandName}>Patinhas</Text>
                 </View>
                 <Text style={styles.title}>Tudo o que seu pet ama, num só lugar.</Text>

@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -10,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { logo } from '../../Assets';
 import FadeInView from '../../components/FadeInView';
 import PressableScale from '../../components/PressableScale';
 import TextField from '../../components/TextField';
@@ -104,7 +106,10 @@ export default function SignUp({ navigation }: ScreenProps<'SignUp'>) {
               >
                 <Text style={styles.backText}>‹</Text>
               </PressableScale>
-              <Text style={styles.step}>🐾 Patinhas</Text>
+              <View style={styles.brand}>
+                <Image source={logo} style={styles.brandMark} accessibilityIgnoresInvertColors />
+                <Text style={styles.step}>Patinhas</Text>
+              </View>
             </FadeInView>
 
             <FadeInView delay={80}>
@@ -240,6 +245,8 @@ const styles = StyleSheet.create({
     ...shadow,
   },
   backText: { fontSize: 32, color: colors.ink, marginTop: -4, marginLeft: -2 },
+  brand: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  brandMark: { width: 28, height: 28, borderRadius: 9 },
   step: { fontSize: 15, fontWeight: '800', color: colors.ink },
   title: { fontSize: 32, fontWeight: '800', color: colors.ink, letterSpacing: -1 },
   subtitle: { fontSize: 15, color: colors.muted, lineHeight: 22, marginTop: 6 },

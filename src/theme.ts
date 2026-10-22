@@ -38,5 +38,7 @@ export const shadow = Platform.select({
   default: { elevation: 3 },
 });
 
-export const formatPrice = (value: number) =>
-  `R$ ${value.toFixed(2).replace('.', ',')}`;
+export function formatPrice(value: number) {
+  const [int, cents] = value.toFixed(2).split('.');
+  return `R$ ${int.replace(/\B(?=(\d{3})+(?!\d))/g, '.')},${cents}`;
+}

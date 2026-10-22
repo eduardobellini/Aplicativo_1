@@ -27,9 +27,7 @@ export const styles = StyleSheet.create({
     bottom: 0,
     right: -30,
   },
-  heroEmoji: { fontSize: 120 },
-  heroEmojiCatWrap: { position: 'absolute', right: 70, bottom: 30 },
-  heroEmojiCat: { fontSize: 64 },
+  heroImage: { width: 230, height: 230, borderRadius: 115 },
   form: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: radius.xl,
@@ -45,10 +43,7 @@ export const styles = StyleSheet.create({
     height: 36,
     borderRadius: 12,
     backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  brandMarkText: { fontSize: 18 },
   brandName: { fontSize: 20, fontWeight: '800', color: colors.ink, letterSpacing: -0.5 },
   title: {
     fontSize: 28,

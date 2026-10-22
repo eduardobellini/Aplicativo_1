@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { productImages } from '../../Assets';
 import CartButton from '../../components/CartButton';
 import FadeInView from '../../components/FadeInView';
 import PressableScale from '../../components/PressableScale';
@@ -101,17 +102,17 @@ export default function ProductDetail({ navigation, route }: ScreenProps<'Produc
 
       <View style={styles.hero}>
         <View style={styles.halo} />
-        <Animated.Text
+        <Animated.Image
+          source={productImages[product.id]}
+          accessibilityIgnoresInvertColors
           style={[
-            styles.heroEmoji,
+            styles.heroImage,
             {
               opacity: entrance,
               transform: [{ scale }, { translateY: floatY }, { translateY: hopY }, { rotate }],
             },
           ]}
-        >
-          {product.emoji}
-        </Animated.Text>
+        />
       </View>
 
       <FadeInView delay={80} offset={80} style={styles.sheet}>
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
     borderRadius: 110,
     backgroundColor: 'rgba(255,255,255,0.55)',
   },
-  heroEmoji: { fontSize: 130 },
+  heroImage: { width: 210, height: 210, borderRadius: radius.xl },
   sheet: {
     flex: 1,
     backgroundColor: colors.surface,

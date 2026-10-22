@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { productImages } from '../Assets';
 import { Product } from '../types';
 import { colors, formatPrice, radius, shadow, tints } from '../theme';
 import PressableScale from './PressableScale';
@@ -17,7 +18,7 @@ export default function ProductCard({ product, onPress, onAdd }: Props) {
   return (
     <PressableScale onPress={onPress} style={styles.card} accessibilityRole="button">
       <View style={[styles.art, { backgroundColor: tints[product.category] }]}>
-        <Text style={styles.emoji}>{product.emoji}</Text>
+        <Image source={productImages[product.id]} style={styles.image} accessibilityIgnoresInvertColors />
         {discount > 0 && (
           <View style={styles.tag}>
             <Text style={styles.tagText}>-{discount}%</Text>
@@ -65,8 +66,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
+    overflow: 'hidden',
   },
-  emoji: { fontSize: 58 },
+  image: { width: '100%', height: '100%' },
   tag: {
     position: 'absolute',
     top: 10,

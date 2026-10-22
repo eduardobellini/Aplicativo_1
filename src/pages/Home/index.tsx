@@ -1,6 +1,16 @@
 import { useMemo, useState } from 'react';
-import { Alert, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Alert,
+  FlatList,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { categoryImages, illustrations } from '../../Assets';
 import CartButton from '../../components/CartButton';
 import FadeInView from '../../components/FadeInView';
 import PressableScale from '../../components/PressableScale';
@@ -84,7 +94,11 @@ export default function Home({ navigation }: ScreenProps<'Home'>) {
               <Text style={styles.bannerPillText}>Cupom AUAU30</Text>
             </View>
           </View>
-          <Text style={styles.bannerEmoji}>🐕</Text>
+          <Image
+            source={illustrations.banner}
+            style={styles.bannerImage}
+            accessibilityIgnoresInvertColors
+          />
         </View>
       </FadeInView>
 
@@ -104,7 +118,7 @@ export default function Home({ navigation }: ScreenProps<'Home'>) {
                 accessibilityRole="button"
                 accessibilityState={{ selected: active }}
               >
-                <Text style={styles.chipEmoji}>{c.emoji}</Text>
+                <Image source={categoryImages[c.id]} style={styles.chipImage} />
                 <Text style={[styles.chipText, active && styles.chipTextActive]}>{c.label}</Text>
               </PressableScale>
             );
@@ -133,7 +147,11 @@ export default function Home({ navigation }: ScreenProps<'Home'>) {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Text style={styles.emptyEmoji}>🐾</Text>
+            <Image
+              source={illustrations.emptySearch}
+              style={styles.emptyImage}
+              accessibilityIgnoresInvertColors
+            />
             <Text style={styles.emptyText}>Nenhum produto encontrado.</Text>
           </View>
         }
@@ -231,13 +249,14 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
   bannerPillText: { color: '#fff', fontWeight: '800', fontSize: 12 },
-  bannerEmoji: { fontSize: 78, marginLeft: 8 },
+  bannerImage: { width: 112, height: 112, marginLeft: 8, marginVertical: -10 },
   chips: { gap: 10, paddingVertical: 20 },
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 16,
+    gap: 8,
+    paddingLeft: 6,
+    paddingRight: 16,
     height: 42,
     borderRadius: 999,
     backgroundColor: colors.surface,
@@ -245,7 +264,7 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
   },
   chipActive: { backgroundColor: colors.ink, borderColor: colors.ink },
-  chipEmoji: { fontSize: 16 },
+  chipImage: { width: 30, height: 30, borderRadius: 15 },
   chipText: { fontSize: 14, fontWeight: '700', color: colors.inkSoft },
   chipTextActive: { color: '#fff' },
   sectionRow: {
@@ -257,6 +276,6 @@ const styles = StyleSheet.create({
   section: { fontSize: 20, fontWeight: '800', color: colors.ink, letterSpacing: -0.4 },
   sectionCount: { fontSize: 13, color: colors.muted, fontWeight: '600' },
   empty: { alignItems: 'center', paddingVertical: 50 },
-  emptyEmoji: { fontSize: 44, marginBottom: 8 },
+  emptyImage: { width: 180, height: 180, borderRadius: radius.xl, marginBottom: 8 },
   emptyText: { fontSize: 15, color: colors.muted, fontWeight: '600' },
 });
